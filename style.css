@@ -1,5 +1,4 @@
 
-
 /* общий фон */
 body {
     background: rgba(177, 7, 219, 0.082);
@@ -163,6 +162,21 @@ h1 {
     background: #e2e5d6;
 }
 
+/* Кнопка копирования ссылки */
+.copy-link-btn {
+    background: #eef2f5;
+    color: #5a6e8a;
+    border: 1px solid #cbced9;
+    border-radius: 30px;
+    padding: 4px 12px;
+    font-size: 0.75rem;
+    cursor: pointer;
+    transition: 0.1s;
+}
+.copy-link-btn:hover {
+    background: #e2e6ea;
+}
+
 .delete-btn {
     background: #ffe6e2;
     color: #bc6a5a;
@@ -216,3 +230,4 @@ h1 {
     font-size: 0.9rem;
     background: #fefcf8;
 }
+
