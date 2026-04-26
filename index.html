@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <title>Истории</title>
+</head>
+
+<body>
+
+    <h1>На приёме у психолога</h1>
+
+<!-- контейнер для кнопки "Создать новую историю" (справа) -->
+<div class="top-bar">
+    <button id="createBtn" class="btn-create-history">+ Создать новую историю</button>
+</div>
+
+<!-- сюда будут динамически добавляться карточки -->
+<div class="cards-grid" id="cardsGrid"></div>
+
+<!-- Модальное окно для создания / редактирования -->
+<div id="modalForm" class="modal hidden">
+    <div class="modal-content">
+        <h3 id="modalTitle">Новая история</h3>
+        <label>Название</label>
+        <input type="text" id="storyTitle" placeholder="Введите название...">
+        <label>Автор</label>
+        <input type="text" id="storyAuthor" placeholder="Имя автора">
+        <label>Текст истории</label>
+        <textarea id="storyContent" rows="5" placeholder="Поделитесь..."></textarea>
+        <div class="modal-buttons">
+            <button id="saveStoryBtn" class="save-btn">Сохранить</button>
+            <button id="cancelModalBtn" class="cancel-btn">Отмена</button>
+        </div>
+    </div>
+</div>
+
+<script src="main.js"></script>
+</body>
+</html>
