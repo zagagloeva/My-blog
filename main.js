@@ -1,6 +1,3 @@
-// renderPosts();
-
-// renderSinglePost();
 // ---------- ХРАНИЛИЩЕ ----------
 const STORAGE_KEY = "psychologist_posts";
 
@@ -93,8 +90,8 @@ function renderAllCards() {
         const safeFullContent = escapeHtml(post.content).replace(/\n/g, '<br>');
 
         // Каждая карточка получает уникальный id контейнера для текста, чтобы управлять разворотом
-        const uniqueId = `text - ${ post.id }`;
-        html +=`
+        const uniqueId = `text - ${post.id}`;
+        html += `
             <div class="card" data-id="${post.id}">
                 <div class="card-header">${safeTitle}</div>
                 <div class="card-author">✍️ ${safeAuthor}</div>
@@ -102,6 +99,7 @@ function renderAllCards() {
                 <button class="dots-btn" data-target="${uniqueId}">...</button>
                 <div class="card-buttons">
                     <button class="edit-btn" data-id="${post.id}">✏️ Редактировать</button>
+                    <button class="copy-link-btn" data-id="${post.id}" data-title="${escapeHtml(post.title)}">🔗 Копировать ссылку (Telegram)</button>
                     <button class="delete-btn" data-id="${post.id}">🗑 Удалить</button>
                 </div>
             </div>
@@ -135,6 +133,16 @@ function renderAllCards() {
             openEditModal(id);
         });
     });
+
+    document.querySelectorAll('.copy-link-btn').forEach(btn => {
+        btn.addEventListener('click', (e) => {
+            const id = btn.getAttribute('data-id');
+            const title = btn.getAttribute('data-title');
+            copyPostLink(id, title);
+        });
+
+    });
+
 
     // Удаление
     document.querySelectorAll('.delete-btn').forEach(btn => {
@@ -213,4 +221,13 @@ document.addEventListener('DOMContentLoaded', () => {
         const modal = document.getElementById('modalForm');
         if (e.target === modal) closeModal();
     });
+
 });
+// Функция копирования ссылки для Telegram
+function copyPostLink(postId, postTitle) {
+    const baseUrl = window.location.href.split('?')[0];
+    const link = `${baseUrl}?post=${postId}`;
+    navigator.clipboard.writeText(link).then(() => {
+        alert(`✅ Ссылка на "${postTitle}" скопирована!\nОтправьте её в Telegram – откроется прямо там.`);
+    }).catch(() => {});
+}
