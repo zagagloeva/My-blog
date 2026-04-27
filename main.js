@@ -215,7 +215,7 @@ function showStoryFromURL() {
         const text = decodeURIComponent(params.get('text') || '');
         if (!title || !text) return false;
 
-        // Скрыть лишние элементы (кнопку создания, блок авторизации, основной контент)
+        // Скрываем лишние элементы
         const createBtn = document.getElementById('createBtn');
         if (createBtn) createBtn.style.display = 'none';
         const authBlock = document.getElementById('authBlock');
@@ -223,32 +223,56 @@ function showStoryFromURL() {
         const mainContent = document.getElementById('mainContent');
         if (mainContent) mainContent.style.display = 'none';
 
-        // Показать историю в контейнере cardsGrid
-        const container = document.getElementById('cardsGrid');
-        if (container) {
-            const safeTitle = escapeHtml(title);
-            const safeAuthor = escapeHtml(author);
-            const safeContent = escapeHtml(text).replace(/\n/g, '<br>');
-            container.innerHTML = `  
-                <div style="background:white; border-radius:32px; padding:28px; max-width:600px; margin:0 auto;">
-                    <div style="text-align:center; color:#b7a17a; font-size:1.2rem; letter-spacing:2px; margin-bottom:16px;">
-                        ﹏﹏﹏﹏ ✦ ﹏﹏﹏﹏
-                    </div>
-                    <h2 style="text-align:center;">${safeTitle}</h2>
-                    <div style="text-align:center; margin:12px 0 20px 0;">
-                        <span style="background:#f0eae2; padding:4px 16px; border-radius:40px;">✍️ ${safeAuthor}</span>
-                    </div>
-                    <div style="background:#fefaf5; padding:20px; border-radius:28px;">
-                        ${safeContent}
-                    </div>
-                    <div style="text-align:center; color:#b7a17a; font-size:1.2rem; letter-spacing:2px; margin-top:24px;">
-                        ﹏﹏﹏﹏ ✦ ﹏﹏﹏﹏
-                    </div>
+        // Настраиваем контейнер сетки на полный экран с отступами
+        const grid = document.getElementById('cardsGrid');
+        grid.style.display = 'flex';
+        grid.style.flexDirection = 'column';
+        grid.style.alignItems = 'center';
+        grid.style.justifyContent = 'flex-start';
+        grid.style.width = '100%';
+        grid.style.minHeight = '100vh';
+        grid.style.margin = '0';
+        grid.style.padding = '24px';
+        grid.style.boxSizing = 'border-box';
+
+        const safeTitle = escapeHtml(title);
+        const safeAuthor = escapeHtml(author);
+        const safeContent = escapeHtml(text).replace(/\n/g, '<br>');
+
+        grid.innerHTML =` 
+            <div style="background:white; border-radius:32px; padding:28px; width:100%; max-width:800px; box-sizing:border-box;">
+                <div style="text-align:center; color:#b7a17a; font-size:1.2rem; letter-spacing:2px; margin-bottom:16px;">
+                    ﹏﹏﹏﹏ ✦ ﹏﹏﹏﹏
                 </div>
-            `;
-            const backBtn = document.getElementById('backHomeBtn');
-            if (backBtn) backBtn.onclick = () => window.location.href = window.location.href.split('?')[0];
+                <h2 style="text-align:center; margin:0 0 8px 0;">${safeTitle}</h2>
+                <div style="text-align:center; margin:0 0 20px 0;">
+                    <span style="background:#f0eae2; padding:4px 16px; border-radius:40px;">✍️ ${safeAuthor}</span>
+                </div>
+                <div style="background:#fefaf5; padding:20px; border-radius:28px; overflow-y:auto; max-height:60vh;">
+                    ${safeContent}
+                </div>
+                <div style="text-align:center; color:#b7a17a; font-size:1.2rem; letter-spacing:2px; margin-top:24px;">
+                    ﹏﹏﹏﹏ ✦ ﹏﹏﹏﹏
+                </div>
+            </div>
+        `;
+
+        // Эффект скрытия заголовка при прокрутке вниз
+        const header = document.querySelector('h1');
+        if (header) {
+            const handleScroll = () => {
+                if (window.scrollY > 10) {
+                    header.style.opacity = '0';
+                    header.style.visibility = 'hidden';
+                } else {
+                    header.style.opacity = '1';
+                    header.style.visibility = 'visible';
+                }
+            };
+            window.addEventListener('scroll', handleScroll);
+            handleScroll(); // проверить сразу
         }
+
         return true;
     }
     return false;
@@ -292,6 +316,8 @@ function copyPostLink(postId, postTitle) {
         alert(`✅ Ссылка на "${postTitle}" скопирована!\nОтправьте её в Telegram – откроется прямо там.`);
     }).catch(() => {});
 }
+
+
 
 
 
