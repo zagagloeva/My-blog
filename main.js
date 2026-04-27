@@ -231,8 +231,8 @@ function showStoryFromURL() {
         grid.style.justifyContent = 'flex-start';
         grid.style.width = '100%';
         grid.style.minHeight = '100vh';
-        grid.style.margin = '0';
-        grid.style.padding = '0 8px 0';
+        grid.style.margin = '8px';
+        grid.style.padding = '8px';
         grid.style.boxSizing = 'border-box';
 
         const safeTitle = escapeHtml(title);
@@ -240,7 +240,7 @@ function showStoryFromURL() {
         const safeContent = escapeHtml(text).replace(/\n/g, '<br>');
 
         grid.innerHTML =` 
-            <div style="background:white; border-radius:32px; padding:28px; width:100%; max-width:800px; box-sizing:border-box;">
+            <div style="background:white; border-radius:24px; padding:8px; width:100%; min-height:calc(100vh - 80px); box-sizing:border-box; display:flex; flex-direction:column; justify-content:space-between;">
                 <div style="text-align:center; color:#b7a17a; font-size:1.2rem; letter-spacing:2px; margin-bottom:16px;">
                     ﹏﹏﹏﹏ ✦ ﹏﹏﹏﹏
                 </div>
@@ -316,8 +316,6 @@ function copyPostLink(postId, postTitle) {
         alert(`✅ Ссылка на "${postTitle}" скопирована!\nОтправьте её в Telegram – откроется прямо там.`);
     }).catch(() => {});
 }
-
-
 
 
 
