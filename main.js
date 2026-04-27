@@ -1,3 +1,4 @@
+
 // renderPosts();
 
 // renderSinglePost();
@@ -316,7 +317,5 @@ function copyPostLink(postId, postTitle) {
         alert(`✅ Ссылка на "${postTitle}" скопирована!\nОтправьте её в Telegram – откроется прямо там.`);
     }).catch(() => {});
 }
-
-
 
 
