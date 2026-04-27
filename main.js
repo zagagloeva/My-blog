@@ -244,7 +244,6 @@ function showStoryFromURL() {
                     <div style="text-align:center; color:#b7a17a; font-size:1.2rem; letter-spacing:2px; margin-top:24px;">
                         ﹏﹏﹏﹏ ✦ ﹏﹏﹏﹏
                     </div>
-                    <button id="backHomeBtn" style="display:block; margin:24px auto 0 auto; background:#eae2d7; border:none; padding:8px 24px; border-radius:40px;">← На главную</button>
                 </div>
             `;
             const backBtn = document.getElementById('backHomeBtn');
