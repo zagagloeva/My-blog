@@ -232,7 +232,7 @@ function showStoryFromURL() {
         grid.style.width = '100%';
         grid.style.minHeight = '100vh';
         grid.style.margin = '0';
-        grid.style.padding = '24px';
+        grid.style.padding = '0 8px 0';
         grid.style.boxSizing = 'border-box';
 
         const safeTitle = escapeHtml(title);
@@ -316,6 +316,7 @@ function copyPostLink(postId, postTitle) {
         alert(`✅ Ссылка на "${postTitle}" скопирована!\nОтправьте её в Telegram – откроется прямо там.`);
     }).catch(() => {});
 }
+
 
 
 
