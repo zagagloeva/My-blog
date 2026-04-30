@@ -207,6 +207,8 @@ h1 {
     border-radius: 20px;
     gap: 15px;
     font-size: 0.85rem;
+    padding-left: 16px;
+    padding-right: 16px;
 }
 
 .delete-icon{
@@ -296,6 +298,33 @@ h1 {
     }
 }
 
+.card-category, .card-views{
+    font-size: 0.7rem;
+    color: #8f735b;
+    margin-top: 4px;
+    text-align: left;
+    display: inline-block;
+    margin-right: 12px;
+}
+
+.card-category::before{
+    content: "📂";
+}
+.card-views::before{
+    content: "👁";
+}
+#storyCategory{
+    width: 60%;
+    padding: 12px 16px;
+    border-radius: 24px;
+    border: 1px solid #ddd0c2;
+    font-family: inherit;
+    font-size: 0.9rem;
+    background: #fefcf8;
+    margin-bottom: 16px;
+    /* cursor: pointer; */
+}
+
 /* Для просмотра истории на компьютере: ширина карточки 70% */
 @media (min-width: 769px) {
     .story-view-mode .story-card {
@@ -303,3 +332,4 @@ h1 {
         margin: 0 auto;
     }
 }
+
