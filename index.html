@@ -24,6 +24,13 @@
 <div id="modalForm" class="modal hidden">
     <div class="modal-content">
         <h3 id="modalTitle">Новая история</h3>
+        <label for=""></label>
+        <select id="storyCategory">
+            <option value="На приёме у психолога">На приёме у психолога</option>
+            <option value="История клиента">История клиента</option>
+            <option value="День из жизни">День из жизни</option>
+            <option value="Личная история">Личная история</option>
+        </select>
         <label>Название</label>
         <input type="text" id="storyTitle" placeholder="Введите название...">
         <label>Автор</label>
@@ -31,8 +38,8 @@
         <label>Текст истории</label>
         <textarea id="storyContent" rows="5" placeholder="Поделитесь..."></textarea>
         <div class="modal-buttons">
-            <button id="saveStoryBtn" class="save-btn">Сохранить</button>
-            <button id="cancelModalBtn" class="cancel-btn">Отмена</button>
+            <button id="saveStoryBtn" class="save-btn"> Сохранить </button>
+            <button id="cancelModalBtn" class="cancel-btn"> Отмена </button>
         </div>
     </div>
 </div>
